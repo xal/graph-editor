@@ -5,17 +5,16 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 
 public class Perspective implements IPerspectiveFactory {
-	
-	public void createInitialLayout(IPageLayout layout) {
-		layout.setEditorAreaVisible(false);
-		
-		String editorArea = layout.getEditorArea();
-		
-		layout.addView(ElementInfoView.ID,IPageLayout.RIGHT, 0.75f, editorArea);
-		
-		layout.addView(ElementInfoView.ID, IPageLayout.RIGHT, 0.1f, ElementInfoView.ID);
-		layout.addView(ElementEditView.ID, IPageLayout.BOTTOM, 0.1f, ElementEditView.ID);
-	
-	}
+    
+    /**
+     * We replace the editor area with three application folders that can be used for placing views.
+     * 
+     * @param the layout
+     */
+    public void createInitialLayout( IPageLayout layout ) {
+        layout.setEditorAreaVisible(true);
+        layout.setFixed(false);
+        
+    }
 
 }

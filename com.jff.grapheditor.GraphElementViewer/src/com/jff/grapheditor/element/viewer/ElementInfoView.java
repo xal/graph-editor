@@ -1,6 +1,8 @@
 package com.jff.grapheditor.element.viewer;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 
 import com.jff.grapheditor.element.view.AbstractGraphElementView;
 import com.jff.grapheditor.types.AbstractElement;
@@ -16,6 +18,8 @@ public class ElementInfoView extends AbstractGraphElementView {
 	 */
 	public void createPartControl(Composite parent) {
 
+		new Label(parent, SWT.NONE).setText("viewer");
+		
 	}
 
 

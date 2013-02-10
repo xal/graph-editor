@@ -1,8 +1,8 @@
 package com.jff.grapheditor.controller;
 
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,23 +11,6 @@ import org.slf4j.LoggerFactory;
 import com.jff.grapheditor.types.AbstractElement;
 import com.jff.grapheditor.types.Edge;
 import com.jff.grapheditor.types.Node;
-import com.jff.questbase.model.factories.PagesFactory;
-import com.jff.questbase.model.object.Page;
-import com.jff.questcreator.elementinfo.ui.ElementInfoComponent;
-import com.jff.questcreator.grapheditor.ui.GraphEditorComponent;
-import com.jff.questcreator.grapheditor.ui.components.objects.Edge;
-import com.jff.questcreator.grapheditor.ui.components.objects.GraphElement;
-import com.jff.questcreator.grapheditor.ui.components.objects.GraphLine;
-import com.jff.questcreator.grapheditor.ui.components.objects.Node;
-import com.jff.questcreator.grapheditor.ui.components.objects.GraphPopUpItem;
-import com.jff.questcreator.grapheditor.ui.components.objects.QuestEdge;
-import com.jff.questcreator.grapheditor.ui.components.objects.QuestNode;
-
-import edu.umd.cs.piccolo.PLayer;
-import edu.umd.cs.piccolo.PNode;
-import edu.umd.cs.piccolo.event.PDragEventHandler;
-import edu.umd.cs.piccolo.event.PInputEvent;
-import edu.umd.cs.piccolo.util.PBounds;
 
 public class InteractionManager {
 
@@ -115,16 +98,13 @@ public class InteractionManager {
 		sourceNode.removeSourceEdge(edge);
 		destinationNode.removeDestinationEdge(edge);
 		
-		sourceNode.update();
-		destinationNode.update();
-		
 		fireEdgeRemoved(edge);
 		
 		
 	}
 
 	private void fireEdgeRemoved(Edge edge) {
-		graphEditor.removeEdge(edge);
+//		graphEditor.removeEdge(edge);
 	}
 
 	private void deselectIfSelected(AbstractElement graphElement) {
@@ -147,14 +127,16 @@ public class InteractionManager {
 		
 		
 		List<Edge> sourceForEdges = new ArrayList<Edge>();		
-		sourceForEdges.addAll(node.getSourceForEdges());
+		Collection<Edge> tempSourceForEdges = node.getSourceForEdges();
+		sourceForEdges.addAll(tempSourceForEdges);
 		
 		for(Edge edge : sourceForEdges) {
 			deleteEdge(edge);
 		}
 		
 		List<Edge> destinationForEdges = new ArrayList<Edge>();
-		destinationForEdges.addAll(node.getDestinationForEdges());
+		Collection<Edge> tempDestinationForEdges = node.getDestinationForEdges();
+		destinationForEdges.addAll(tempDestinationForEdges);
 		
 		for(Edge edge : destinationForEdges) {
 			deleteEdge(edge);
@@ -166,36 +148,35 @@ public class InteractionManager {
 	}
 
 	private void fireNodeRemoved(Node node) {
-		graphEditor.removeNode(node);
+//		graphEditor.removeNode(node);
 	}
 
 	public void createNewEdge(Node sourceNode, Node destinationNode) {
-		QuestNode sourceQuestNode = (QuestNode) sourceNode;
-		QuestNode destinationQuestNode = (QuestNode) destinationNode;
+
+		Edge edge = new Edge(sourceNode, destinationNode);
 		
-		
-		// TODO: null
-		QuestEdge questEdge = new QuestEdge(null, sourceQuestNode, destinationQuestNode);
-		
-		graphEditor.addEdge(questEdge);
-		
-		graphEditor.setNormalState();
+		fireEdgeCreated();
+	}
+
+	private void fireEdgeCreated() {
+//		graphEditor.addEdge(questEdge);
+//		
+//		graphEditor.setNormalState();
 	}
 
 	public void editEdge(Edge graphEdge, Node sourceNode,
 			Node destinationNode) {
-		QuestNode sourceQuestNode = (QuestNode) sourceNode;
-		QuestNode destinationQuestNode = (QuestNode) destinationNode;
+		Edge questEdge = (Edge) graphEdge;
 		
+		questEdge.setSourceNode(sourceNode);
+		questEdge.setDestinationNode(destinationNode);
 		
+		fireEdgeUpdated();
 		
-		QuestEdge questEdge = (QuestEdge) graphEdge;
-		
-		questEdge.setSourceNode(sourceQuestNode);
-		questEdge.setDestinationNode(destinationQuestNode);
-		
-		graphEditor.setNormalState();
-		
+	}
+
+	private void fireEdgeUpdated() {
+//		graphEditor.setNormalState();
 	}
 
 	

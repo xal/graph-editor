@@ -8,7 +8,7 @@
          point="org.eclipse.core.runtime.applications">
       <application>
          <run
-               class="com.jff.questcreator.Application">
+               class="com.jff.grapheditor.Application">
          </run>
       </application>
    </extension>
@@ -19,29 +19,6 @@
             class="com.jff.grapheditor.Perspective"
             id="com.jff.grapheditor.Perspective">
       </perspective>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            name="GraphEditor"
-            class="com.jff.grapheditor.element.view.AbstractGraphElementView"
-            id="QustCreatorHost.grapheditor">
-      </view>
-      <view
-            class="com.jff.questcreator.elementedit.ui.ElementEditView"
-            id="QustCreatorHost.elementedit"
-            name="ElementEdit"
-            restorable="true">
-      </view>
-      <view
-            class="com.jff.questcreator.elementinfo.ui.ElementInfoView"
-            id="QustCreatorHost.elementinfo"
-            name="ElementInfo"
-            restorable="true">
-      </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -55,6 +32,19 @@
             </command>
          </menu>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.jff.grapheditor.views"
+            name="com.jff.grapheditor.views">
+      </category>
    </extension>
 
 </plugin>

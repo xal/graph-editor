@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GraphElementViewer
-Bundle-SymbolicName: com.jff.grapheditor.GraphElementViewer
+Bundle-SymbolicName: com.jff.grapheditor.GraphElementViewer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: graphelementviewer.Activator
 Require-Bundle: org.eclipse.ui,

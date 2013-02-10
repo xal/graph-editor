@@ -53,34 +53,5 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path
-	 *
-	 * @param path the path
-	 * @return the image descriptor
-	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
-		return imageDescriptorFromPlugin(PLUGIN_ID, path);
-	}
-	
-	public static String getFullPath(String relativePath){
-		
-		Bundle bundle = getDefault().getBundle();
-		
-		 
-		
-		String fullPath = null;
-		try {
-			fullPath = FileLocator.getBundleFile(bundle).getPath() + File.separator + relativePath;
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		
-		File file = new File(fullPath);
-		
-		return file.getAbsolutePath();
-		
-	}
+
 }

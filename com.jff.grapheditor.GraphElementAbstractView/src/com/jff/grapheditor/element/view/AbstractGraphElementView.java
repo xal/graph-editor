@@ -3,6 +3,7 @@ package com.jff.grapheditor.element.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import com.jff.grapheditor.element.view.interfaces.IElementListener;
@@ -32,6 +33,44 @@ public abstract class AbstractGraphElementView extends ViewPart implements IGrap
 	public void fireElementSelected(AbstractElement element) {
 		for(IElementListener listener : elementListeners) {
 			listener.onElementSelected(element);
+		}
+	}
+
+
+	@Override
+	public void onElementSelectExit(AbstractElement element) {
+		for(IElementListener listener : elementListeners) {
+			listener.onElementSelectExit(element);
+		}
+	}
+
+
+	@Override
+	public void onElementViewExit(AbstractElement element) {
+		for(IElementListener listener : elementListeners) {
+			listener.onElementViewExit(element);
+		}
+	}
+
+	@Override
+	public void onElementUpdated(AbstractElement element) {
+		for(IElementListener listener : elementListeners) {
+			listener.onElementUpdated(element);
+		}
+	}
+
+	@Override
+	public void onElementCreated(AbstractElement element) {
+		for(IElementListener listener : elementListeners) {
+			listener.onElementCreated(element);
+		}
+		
+	}
+
+	@Override
+	public void onElementDeleted(AbstractElement element) {
+		for(IElementListener listener : elementListeners) {
+			listener.onElementDeleted(element);
 		}
 	}
 
