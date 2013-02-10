@@ -1,0 +1,4 @@
+string_shell_title	=	Quest Creator
+image_button_new	=	new.png
+image_button_move	=	move.png
+image_app_icon		=	app_icon.png

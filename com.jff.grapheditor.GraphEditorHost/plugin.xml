@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="com.jff.grapheditor.element.view.GraphElementView" name="GraphElementView" schema="schema/com.jff.grapheditor.element.view.GraphElementView.exsd"/>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.jff.questcreator.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="com.jff.grapheditor.Perspective"
+            id="com.jff.grapheditor.Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="GraphEditor"
+            class="com.jff.grapheditor.element.view.AbstractGraphElementView"
+            id="QustCreatorHost.grapheditor">
+      </view>
+      <view
+            class="com.jff.questcreator.elementedit.ui.ElementEditView"
+            id="QustCreatorHost.elementedit"
+            name="ElementEdit"
+            restorable="true">
+      </view>
+      <view
+            class="com.jff.questcreator.elementinfo.ui.ElementInfoView"
+            id="QustCreatorHost.elementinfo"
+            name="ElementInfo"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="File">
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
