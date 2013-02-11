@@ -15,9 +15,10 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Perspective"
             class="com.jff.grapheditor.Perspective"
-            id="com.jff.grapheditor.Perspective">
+            fixed="false"
+            id="com.jff.grapheditor.Perspective"
+            name="Perspective">
       </perspective>
    </extension>
    <extension
@@ -38,13 +39,6 @@
       <contexts
             file="contexts.xml">
       </contexts>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="com.jff.grapheditor.views"
-            name="com.jff.grapheditor.views">
-      </category>
    </extension>
 
 </plugin>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.jff.grapheditor.element.viewer.ElementInfoView"
+            id="com.jff.grapheditor.element.viewer.ElementInfoView"
+            name="ElementInfoView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="com.jff.grapheditor.Perspective">
+         <view
+               closeable="false"
+               id="com.jff.grapheditor.element.viewer.ElementInfoView"
+               minimized="false"
+               moveable="true"
+               ratio="0.5"
+               relationship="bottom"
+               relative="com.jff.grapheditor.element.editor.ElementEditView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
